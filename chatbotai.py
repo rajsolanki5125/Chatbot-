@@ -36,7 +36,7 @@ class AiBot:
          if command.lower() in reply.lower():
             print("Thanks for reaching out. Have a great day")
             return True
-      return False  # <-- Yeh for loop ke baad hona chahiye
+      return False  
 
     def chat(self):
         reply = input(random.choice(self.random_question)).lower()
