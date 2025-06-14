@@ -11,7 +11,7 @@ class AiBot:
         "Why are you here?",
         "Are there many humans like you?",
         "What do you consume to sustain?",
-        "Is there Intelligent life on this planet?",
+        "Is there Intelligent life on this planet?", 
         "Does Earth have a leader ?"
     )
     
@@ -32,10 +32,11 @@ class AiBot:
         self.chat()
         
     def make_exit(self, reply):
-        for command in self.exit_commands:
-            if reply == command:
-                print("Thanks for reaching out. Have a great day")
-                return True
+      for command in self.exit_commands:
+         if command.lower() in reply.lower():
+            print("Thanks for reaching out. Have a great day")
+            return True
+      return False  # <-- Yeh for loop ke baad hona chahiye
 
     def chat(self):
         reply = input(random.choice(self.random_question)).lower()
@@ -45,7 +46,7 @@ class AiBot:
     
     def match_reply(self, reply):
         for instart, regex_pattern in self.support_responses.items():
-            found_match = re.match(regex_pattern, reply)
+            found_match = re.match(regex_pattern, reply, re.IGNORECASE)
             if found_match and instart == 'describe_planet_instart':
                 return self.describe_planet_instart()
             elif found_match and instart == 'answer_why_instart':
